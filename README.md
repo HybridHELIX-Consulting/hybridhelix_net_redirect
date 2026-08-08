@@ -1,19 +1,24 @@
 # hybridhelix-net-redirect
 
-Temporary GitHub Pages site that redirects `hybridhelix.net` → `https://hybridhelix.consulting`.
+GitHub Pages site that redirects `hybridhelix.net` → `https://hybridhelix.consulting`.
 
-## Why this exists
+## Purpose
 
-The primary HybridHELIX website lives at `hybridhelix.consulting`. The `.net` domain needs to redirect there with proper HTTPS (no browser security warnings). This repo provides that via GitHub Pages' free SSL provisioning.
-
-## When to remove
-
-This repo becomes unnecessary at the **Website 4.0 root-domain cutover** (rail 50), when the full site begins serving directly from `hybridhelix.net`. At that point, update DNS to point at the production site repo and archive or delete this one.
+The primary HybridHELIX website lives at `hybridhelix.consulting`. This repo provides a clean HTTPS redirect from the `.net` domain via GitHub Pages' free SSL provisioning.
 
 ## Files
 
 | File | Purpose |
 |------|--------|
-| `index.html` | Instant redirect via meta-refresh + JS |
-| `404.html` | Catches all subpaths and redirects them too |
+| `index.html` | Branded redirect page with logo, company name, and tagline |
+| `404.html` | Catches all subpaths and redirects them |
 | `CNAME` | Tells GitHub Pages this site serves `hybridhelix.net` |
+| `logo.png` | HybridHELIX logo displayed on the redirect page |
+
+## DNS Requirements
+
+For the site to work, the following DNS records must be set for `hybridhelix.net`:
+
+- Four **A records** for `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+- **CNAME** for `www` → `hybridhelix-consulting.github.io`
+- **Enforce HTTPS** enabled in GitHub Pages settings
